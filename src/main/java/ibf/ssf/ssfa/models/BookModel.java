@@ -7,6 +7,7 @@ public class BookModel {
   private String description;
   private String excerpt;
   private boolean cached = false;
+  private String cover;
 
   public BookModel() {
 
@@ -17,6 +18,7 @@ public class BookModel {
     this.description = parameters[1];
     this.excerpt = parameters[2];
     this.cached = true;
+    this.cover = parameters[3];
   }
 
   public String getTitle() {
@@ -51,9 +53,17 @@ public class BookModel {
     this.cached = cached;
   }
 
+  public String getCover() {
+    return this.cover;
+  }
+
+  public void setCover(String cover) {
+    this.cover = cover;
+  }
+
   @Override
   public String toString() {
-    return String.join("|", this.title, this.description, this.excerpt);
+    return String.join("|", this.title, this.description, this.excerpt, this.cover);
   }
 
   public static BookModel create(JsonObject o) {
@@ -72,12 +82,22 @@ public class BookModel {
       }
     }
 
-    book.setDescription(desc);
+    if (desc == "") {
+      book.setDescription("No description found.");
+    } else {
+      book.setDescription(desc);
+    }
 
     if (o.containsKey("excerpts")) {
       book.setExcerpt(o.getJsonArray("excerpts").getJsonObject(0).getString("excerpt"));
     } else {
-      book.setExcerpt("No excerpt found");
+      book.setExcerpt("No excerpt found.");
+    }
+
+    if (o.containsKey("covers")) {
+      book.setCover(o.getJsonArray("covers").get(0).toString());
+    } else {
+      book.setCover("NOT_FOUND");
     }
 
     return book;

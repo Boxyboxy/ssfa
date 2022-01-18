@@ -100,6 +100,7 @@ public class BookServiceImple implements BookService {
       logger.log(Level.INFO, "Title: %s".formatted(book.getTitle()));
       logger.log(Level.INFO, "Description: %s".formatted(book.getDescription()));
       logger.log(Level.INFO, "Excerpt: %s".formatted(book.getExcerpt()));
+      logger.log(Level.INFO, "Cover: %s".formatted(book.getCover()));
       return book;
     } catch (Exception e) {
 
