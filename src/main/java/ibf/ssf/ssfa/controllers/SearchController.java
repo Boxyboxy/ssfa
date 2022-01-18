@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ibf.ssf.ssfa.service.BookService;
+import ibf.ssf.ssfa.service.BookServiceImple;
 
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +23,7 @@ public class SearchController {
   private final Logger logger = Logger.getLogger(SearchController.class.getName());
 
   @Autowired
-  private BookService bookService;
+  private BookServiceImple bookService;
 
   @GetMapping
   public String searchBook(@RequestParam(required = true) String title, Model model) {

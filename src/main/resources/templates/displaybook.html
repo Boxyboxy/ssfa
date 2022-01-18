@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search Results</title>
+    <title>Details of book</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,23 +15,23 @@
   <body>
     <div class="container">
       <div class="row mt-3">
-        <h1
-          class="d-flex justify-content-center"
-          data-th-text="|Search result for '${title}'|"
-        ></h1>
         <div class="d-flex flex-column">
-          <ol>
-            <li
-              data-th-if="${resultList.size() > 0}"
-              th:each="result:${resultList}"
-            >
-              <a
-                data-th-text="${result.title}"
-                data-th-href="|/book/${result.key}|"
-              ></a>
-            </li>
-            <p data-th-if="${resultList.size() == 0}">No results found!</p>
-          </ol>
+          <p
+            class="d-flex justify-content-center"
+            data-th-text="|Title: ${book.title}|"
+          ></p>
+          <p
+            class="d-flex justify-content-center"
+            data-th-text="|Description: ${book.description}|"
+          ></p>
+          <p
+            class="d-flex justify-content-center"
+            data-th-text="|Excerpt: ${book.excerpt}|"
+          ></p>
+          <p
+            class="d-flex justify-content-center"
+            data-th-text="|Cached: ${book.cached}|"
+          ></p>
         </div>
 
         <div class="d-flex justify-content-center">

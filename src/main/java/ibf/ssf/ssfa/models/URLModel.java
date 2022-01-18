@@ -6,7 +6,6 @@ public class URLModel {
 
   private String key;
   private String title;
-  private String link;
 
   public String getKey() {
     return this.key;
@@ -26,7 +25,7 @@ public class URLModel {
 
   public static URLModel create(JsonObject o) {
     final URLModel u = new URLModel();
-    u.setKey(o.getString("key").replace("/work/", ""));
+    u.setKey(o.getString("key").replace("/works/", ""));
     u.setTitle(o.getString("title"));
     return u;
   }
